@@ -657,7 +657,7 @@ void alienFrequencyTask(){
     HAL_LCD_Print(&FFT_Result2[0], 3);
 
     
-    __delay_ms(5000);
+    __delay_ms(100);
     HAL_Clear();
     // 
 }
@@ -700,7 +700,7 @@ void initialize_all(){
 void main(void) {
     initialize_all();
     LATBbits.LATB4 = 1;
-    __delay_ms(2000);
+    __delay_ms(100);
     while(1){
         HAL_LCD_Print(&Rover_Team[0], 16);
         while(PORTAbits.RA5 == 1){
