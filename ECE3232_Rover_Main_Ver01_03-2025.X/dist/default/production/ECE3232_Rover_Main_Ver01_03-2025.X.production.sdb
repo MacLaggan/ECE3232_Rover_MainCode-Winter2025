@@ -1,0 +1,747 @@
+[p GLOBOPT AUTOSTATIC IEEE_DBL IEEE_FLT PIC14 PIC14E ]
+[d version 1.1 ]
+[d edition pro ]
+[d chip 16F18855 ]
+[d frameptr 6 ]
+"5 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+"5 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+"5 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+"10 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\sprcadd.c
+[v ___fladd __fladd `(d  1 e 4 0 ]
+"4 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\Umul8_16.c
+[v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
+"6 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\pic\__eeprom.c
+[v ___eecpymem __eecpymem `(v  1 e 1 0 ]
+"39
+[v ___memcpyee __memcpyee `(v  1 e 1 0 ]
+"117 C:\Users\MDMac\Documents\Documents\Documente\university\term-6_winter2025\Embedded Systems\Labs\Lab6\ECE3232_Rover_Main_Ver01_03-2025.X\Rover_Main_Ver01.c
+[v _configUART1 configUART1 `(v  1 e 1 0 ]
+"139
+[v _configISR configISR `(v  1 e 1 0 ]
+"149
+[v _I2C_stop I2C_stop `(v  1 e 1 0 ]
+"156
+[v _configI2C configI2C `(v  1 e 1 0 ]
+"170
+[v _I2C_start I2C_start `(v  1 e 1 0 ]
+"179
+[v _I2C_write I2C_write `(v  1 e 1 0 ]
+"196
+[v _HAL_I2C_Master_Transmit HAL_I2C_Master_Transmit `(v  1 e 1 0 ]
+"225
+[v _HAL_Pulse_Enable HAL_Pulse_Enable `(v  1 e 1 0 ]
+"232
+[v __write_byte _write_byte `(v  1 e 1 0 ]
+"238
+[v _HAL_Write_Init_Nibble HAL_Write_Init_Nibble `(v  1 e 1 0 ]
+"245
+[v _HAL_Write_Command HAL_Write_Command `(v  1 e 1 0 ]
+"267
+[v _HAL_Write_Data HAL_Write_Data `(v  1 e 1 0 ]
+"273
+[v _HAL_Clear HAL_Clear `(v  1 e 1 0 ]
+"294
+[v _HAL_Display_On HAL_Display_On `(v  1 e 1 0 ]
+"302
+[v _HAL_Set_Entry_Mode HAL_Set_Entry_Mode `(v  1 e 1 0 ]
+"318
+[v _HAL_Set_Cursor HAL_Set_Cursor `(v  1 e 1 0 ]
+"329
+[v _HAL_LCD_Print HAL_LCD_Print `(v  1 e 1 0 ]
+"337
+[v _init_LCD init_LCD `(v  1 e 1 0 ]
+"343
+[v _initinit initinit `(v  1 e 1 0 ]
+"376
+[v _HAL_LED_OFF HAL_LED_OFF `(v  1 e 1 0 ]
+"395
+[v _configPins configPins `(v  1 e 1 0 ]
+"446
+[v _intToChar intToChar `(uc  1 e 1 0 ]
+"479
+[v _alienFrequencyTask alienFrequencyTask `(v  1 e 1 0 ]
+"544
+[v _initialize_all initialize_all `(v  1 e 1 0 ]
+"573
+[v _main main `(v  1 e 1 0 ]
+"586
+[v _ISR ISR `II(v  1 e 1 0 ]
+[s S96 . 1 `uc 1 INTEDG 1 0 :1:0 
+`uc 1 . 1 0 :5:1 
+`uc 1 PEIE 1 0 :1:6 
+`uc 1 GIE 1 0 :1:7 
+]
+"364 C:/Program Files/Microchip/MPLABX/v6.20/packs/Microchip/PIC16F1xxxx_DFP/1.24.387/xc8\pic\include\proc/pic16f18855.h
+[u S101 . 1 `S96 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES101  1 e 1 @11 ]
+[s S793 . 1 `uc 1 RA0 1 0 :1:0 
+`uc 1 RA1 1 0 :1:1 
+`uc 1 RA2 1 0 :1:2 
+`uc 1 RA3 1 0 :1:3 
+`uc 1 RA4 1 0 :1:4 
+`uc 1 RA5 1 0 :1:5 
+`uc 1 RA6 1 0 :1:6 
+`uc 1 RA7 1 0 :1:7 
+]
+"401
+[u S802 . 1 `S793 1 . 1 0 ]
+[v _PORTAbits PORTAbits `VES802  1 e 1 @12 ]
+[s S516 . 1 `uc 1 TRISA0 1 0 :1:0 
+`uc 1 TRISA1 1 0 :1:1 
+`uc 1 TRISA2 1 0 :1:2 
+`uc 1 TRISA3 1 0 :1:3 
+`uc 1 TRISA4 1 0 :1:4 
+`uc 1 TRISA5 1 0 :1:5 
+`uc 1 TRISA6 1 0 :1:6 
+`uc 1 TRISA7 1 0 :1:7 
+]
+"608
+[u S525 . 1 `S516 1 . 1 0 ]
+[v _TRISAbits TRISAbits `VES525  1 e 1 @17 ]
+[s S600 . 1 `uc 1 TRISB0 1 0 :1:0 
+`uc 1 TRISB1 1 0 :1:1 
+`uc 1 TRISB2 1 0 :1:2 
+`uc 1 TRISB3 1 0 :1:3 
+`uc 1 TRISB4 1 0 :1:4 
+`uc 1 TRISB5 1 0 :1:5 
+`uc 1 TRISB6 1 0 :1:6 
+`uc 1 TRISB7 1 0 :1:7 
+]
+"670
+[u S609 . 1 `S600 1 . 1 0 ]
+[v _TRISBbits TRISBbits `VES609  1 e 1 @18 ]
+[s S558 . 1 `uc 1 TRISC0 1 0 :1:0 
+`uc 1 TRISC1 1 0 :1:1 
+`uc 1 TRISC2 1 0 :1:2 
+`uc 1 TRISC3 1 0 :1:3 
+`uc 1 TRISC4 1 0 :1:4 
+`uc 1 TRISC5 1 0 :1:5 
+`uc 1 TRISC6 1 0 :1:6 
+`uc 1 TRISC7 1 0 :1:7 
+]
+"732
+[u S567 . 1 `S558 1 . 1 0 ]
+[v _TRISCbits TRISCbits `VES567  1 e 1 @19 ]
+[s S495 . 1 `uc 1 LATA0 1 0 :1:0 
+`uc 1 LATA1 1 0 :1:1 
+`uc 1 LATA2 1 0 :1:2 
+`uc 1 LATA3 1 0 :1:3 
+`uc 1 LATA4 1 0 :1:4 
+`uc 1 LATA5 1 0 :1:5 
+`uc 1 LATA6 1 0 :1:6 
+`uc 1 LATA7 1 0 :1:7 
+]
+"794
+[u S504 . 1 `S495 1 . 1 0 ]
+[v _LATAbits LATAbits `VES504  1 e 1 @22 ]
+[s S692 . 1 `uc 1 LATB0 1 0 :1:0 
+`uc 1 LATB1 1 0 :1:1 
+`uc 1 LATB2 1 0 :1:2 
+`uc 1 LATB3 1 0 :1:3 
+`uc 1 LATB4 1 0 :1:4 
+`uc 1 LATB5 1 0 :1:5 
+`uc 1 LATB6 1 0 :1:6 
+`uc 1 LATB7 1 0 :1:7 
+]
+"856
+[u S701 . 1 `S692 1 . 1 0 ]
+[v _LATBbits LATBbits `VES701  1 e 1 @23 ]
+"3503
+[v _RC1REG RC1REG `VEuc  1 e 1 @281 ]
+"3623
+[v _SP1BRGL SP1BRGL `VEuc  1 e 1 @283 ]
+"3677
+[v _SP1BRGH SP1BRGH `VEuc  1 e 1 @284 ]
+[s S54 . 1 `uc 1 RX9D 1 0 :1:0 
+`uc 1 OERR 1 0 :1:1 
+`uc 1 FERR 1 0 :1:2 
+`uc 1 ADDEN 1 0 :1:3 
+`uc 1 CREN 1 0 :1:4 
+`uc 1 SREN 1 0 :1:5 
+`uc 1 RX9 1 0 :1:6 
+`uc 1 SPEN 1 0 :1:7 
+]
+"3757
+[u S63 . 1 `S54 1 . 1 0 ]
+[v _RC1STAbits RC1STAbits `VES63  1 e 1 @285 ]
+[s S75 . 1 `uc 1 TX9D 1 0 :1:0 
+`uc 1 TRMT 1 0 :1:1 
+`uc 1 BRGH 1 0 :1:2 
+`uc 1 SENDB 1 0 :1:3 
+`uc 1 SYNC 1 0 :1:4 
+`uc 1 TXEN 1 0 :1:5 
+`uc 1 TX9 1 0 :1:6 
+`uc 1 CSRC 1 0 :1:7 
+]
+"3937
+[u S84 . 1 `S75 1 . 1 0 ]
+[v _TX1STAbits TX1STAbits `VES84  1 e 1 @286 ]
+[s S29 . 1 `uc 1 ABDEN 1 0 :1:0 
+`uc 1 WUE 1 0 :1:1 
+`uc 1 . 1 0 :1:2 
+`uc 1 BRG16 1 0 :1:3 
+`uc 1 SCKP 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 RCIDL 1 0 :1:6 
+`uc 1 ABDOVF 1 0 :1:7 
+]
+"4125
+[u S38 . 1 `S29 1 . 1 0 ]
+[v _BAUD1CONbits BAUD1CONbits `VES38  1 e 1 @287 ]
+"5280
+[v _SSP2BUF SSP2BUF `VEuc  1 e 1 @406 ]
+[s S248 . 1 `uc 1 SSPADD 1 0 :8:0 
+]
+"5330
+[s S250 . 1 `uc 1 MSK0 1 0 :1:0 
+`uc 1 MSK1 1 0 :1:1 
+`uc 1 MSK2 1 0 :1:2 
+`uc 1 MSK3 1 0 :1:3 
+`uc 1 MSK4 1 0 :1:4 
+`uc 1 MSK5 1 0 :1:5 
+`uc 1 MSK6 1 0 :1:6 
+`uc 1 MSK7 1 0 :1:7 
+]
+[s S259 . 1 `uc 1 MSK02 1 0 :1:0 
+`uc 1 MSK12 1 0 :1:1 
+`uc 1 MSK22 1 0 :1:2 
+`uc 1 MSK32 1 0 :1:3 
+`uc 1 MSK42 1 0 :1:4 
+`uc 1 MSK52 1 0 :1:5 
+`uc 1 MSK62 1 0 :1:6 
+`uc 1 MSK72 1 0 :1:7 
+]
+[u S268 . 1 `S248 1 . 1 0 `S250 1 . 1 0 `S259 1 . 1 0 ]
+[v _SSP2ADDbits SSP2ADDbits `VES268  1 e 1 @407 ]
+[s S294 . 1 `uc 1 BF 1 0 :1:0 
+`uc 1 UA 1 0 :1:1 
+`uc 1 R_nW 1 0 :1:2 
+`uc 1 S 1 0 :1:3 
+`uc 1 P 1 0 :1:4 
+`uc 1 D_nA 1 0 :1:5 
+`uc 1 CKE 1 0 :1:6 
+`uc 1 SMP 1 0 :1:7 
+]
+"5599
+[s S303 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_A 1 0 :1:5 
+]
+[s S308 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nA 1 0 :1:5 
+]
+[s S313 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nADDRESS 1 0 :1:5 
+]
+[s S318 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 READ_WRITE 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 DATA_ADDRESS 1 0 :1:5 
+]
+[s S323 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 I2C_READ 1 0 :1:2 
+`uc 1 I2C_START 1 0 :1:3 
+`uc 1 I2C_STOP 1 0 :1:4 
+`uc 1 I2C_DAT 1 0 :1:5 
+]
+[s S329 . 1 `uc 1 BF2 1 0 :1:0 
+`uc 1 UA2 1 0 :1:1 
+`uc 1 R 1 0 :1:2 
+`uc 1 START 1 0 :1:3 
+`uc 1 STOP 1 0 :1:4 
+`uc 1 D 1 0 :1:5 
+`uc 1 CKE2 1 0 :1:6 
+`uc 1 SMP2 1 0 :1:7 
+]
+[s S338 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 RW 1 0 :1:2 
+`uc 1 START2 1 0 :1:3 
+`uc 1 STOP2 1 0 :1:4 
+`uc 1 DA 1 0 :1:5 
+]
+[s S344 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 RW2 1 0 :1:2 
+`uc 1 I2C_START2 1 0 :1:3 
+`uc 1 I2C_STOP2 1 0 :1:4 
+`uc 1 DA2 1 0 :1:5 
+]
+[s S350 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 I2C_READ2 1 0 :1:2 
+`uc 1 S2 1 0 :1:3 
+`uc 1 P2 1 0 :1:4 
+`uc 1 DATA_ADDRESS2 1 0 :1:5 
+]
+[s S356 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 READ_WRITE2 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_A2 1 0 :1:5 
+]
+[s S361 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_W2 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 D_nA2 1 0 :1:5 
+]
+[s S366 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 R_nW2 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 I2C_DAT2 1 0 :1:5 
+]
+[s S371 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nW2 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nA2 1 0 :1:5 
+]
+[s S376 . 1 `uc 1 . 1 0 :2:0 
+`uc 1 nWRITE2 1 0 :1:2 
+`uc 1 . 1 0 :2:3 
+`uc 1 nADDRESS2 1 0 :1:5 
+]
+[u S381 . 1 `S294 1 . 1 0 `S303 1 . 1 0 `S308 1 . 1 0 `S313 1 . 1 0 `S318 1 . 1 0 `S323 1 . 1 0 `S329 1 . 1 0 `S338 1 . 1 0 `S344 1 . 1 0 `S350 1 . 1 0 `S356 1 . 1 0 `S361 1 . 1 0 `S366 1 . 1 0 `S371 1 . 1 0 `S376 1 . 1 0 ]
+[v _SSP2STATbits SSP2STATbits `VES381  1 e 1 @409 ]
+[s S203 . 1 `uc 1 SSPM 1 0 :4:0 
+`uc 1 CKP 1 0 :1:4 
+`uc 1 SSPEN 1 0 :1:5 
+`uc 1 SSPOV 1 0 :1:6 
+`uc 1 WCOL 1 0 :1:7 
+]
+"5884
+[s S209 . 1 `uc 1 SSPM0 1 0 :1:0 
+`uc 1 SSPM1 1 0 :1:1 
+`uc 1 SSPM2 1 0 :1:2 
+`uc 1 SSPM3 1 0 :1:3 
+]
+[s S214 . 1 `uc 1 SSPM02 1 0 :1:0 
+`uc 1 SSPM12 1 0 :1:1 
+`uc 1 SSPM22 1 0 :1:2 
+`uc 1 SSPM32 1 0 :1:3 
+`uc 1 CKP2 1 0 :1:4 
+`uc 1 SSPEN2 1 0 :1:5 
+`uc 1 SSPOV2 1 0 :1:6 
+`uc 1 WCOL2 1 0 :1:7 
+]
+[u S223 . 1 `S203 1 . 1 0 `S209 1 . 1 0 `S214 1 . 1 0 ]
+[v _SSP2CON1bits SSP2CON1bits `VES223  1 e 1 @410 ]
+[s S126 . 1 `uc 1 SEN 1 0 :1:0 
+`uc 1 RSEN 1 0 :1:1 
+`uc 1 PEN 1 0 :1:2 
+`uc 1 RCEN 1 0 :1:3 
+`uc 1 ACKEN 1 0 :1:4 
+`uc 1 ACKDT 1 0 :1:5 
+`uc 1 ACKSTAT 1 0 :1:6 
+`uc 1 GCEN 1 0 :1:7 
+]
+"6021
+[s S135 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 ADMSK 1 0 :5:1 
+]
+[s S138 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 ADMSK1 1 0 :1:1 
+`uc 1 ADMSK2 1 0 :1:2 
+`uc 1 ADMSK3 1 0 :1:3 
+`uc 1 ADMSK4 1 0 :1:4 
+`uc 1 ADMSK5 1 0 :1:5 
+]
+[s S145 . 1 `uc 1 SEN2 1 0 :1:0 
+`uc 1 ADMSK12 1 0 :1:1 
+`uc 1 ADMSK22 1 0 :1:2 
+`uc 1 ADMSK32 1 0 :1:3 
+`uc 1 ACKEN2 1 0 :1:4 
+`uc 1 ACKDT2 1 0 :1:5 
+`uc 1 ACKSTAT2 1 0 :1:6 
+`uc 1 GCEN2 1 0 :1:7 
+]
+[s S154 . 1 `uc 1 . 1 0 :1:0 
+`uc 1 RSEN2 1 0 :1:1 
+`uc 1 PEN2 1 0 :1:2 
+`uc 1 RCEN2 1 0 :1:3 
+`uc 1 ADMSK42 1 0 :1:4 
+`uc 1 ADMSK52 1 0 :1:5 
+]
+[u S161 . 1 `S126 1 . 1 0 `S135 1 . 1 0 `S138 1 . 1 0 `S145 1 . 1 0 `S154 1 . 1 0 ]
+[v _SSP2CON2bits SSP2CON2bits `VES161  1 e 1 @411 ]
+[s S814 . 1 `uc 1 SSP1IF 1 0 :1:0 
+`uc 1 BCL1IF 1 0 :1:1 
+`uc 1 SSP2IF 1 0 :1:2 
+`uc 1 BCL2IF 1 0 :1:3 
+`uc 1 TXIF 1 0 :1:4 
+`uc 1 RCIF 1 0 :1:5 
+]
+"21109
+[u S821 . 1 `S814 1 . 1 0 ]
+[v _PIR3bits PIR3bits `VES821  1 e 1 @1807 ]
+[s S109 . 1 `uc 1 SSP1IE 1 0 :1:0 
+`uc 1 BCL1IE 1 0 :1:1 
+`uc 1 SSP2IE 1 0 :1:2 
+`uc 1 BCL2IE 1 0 :1:3 
+`uc 1 TXIE 1 0 :1:4 
+`uc 1 RCIE 1 0 :1:5 
+]
+"21531
+[u S116 . 1 `S109 1 . 1 0 ]
+[v _PIE3bits PIE3bits `VES116  1 e 1 @1817 ]
+[s S767 . 1 `uc 1 NDIV 1 0 :4:0 
+`uc 1 NOSC 1 0 :3:4 
+]
+"23204
+[s S770 . 1 `uc 1 NDIV0 1 0 :1:0 
+`uc 1 NDIV1 1 0 :1:1 
+`uc 1 NDIV2 1 0 :1:2 
+`uc 1 NDIV3 1 0 :1:3 
+`uc 1 NOSC0 1 0 :1:4 
+`uc 1 NOSC1 1 0 :1:5 
+`uc 1 NOSC2 1 0 :1:6 
+]
+[u S778 . 1 `S767 1 . 1 0 `S770 1 . 1 0 ]
+[v _OSCCON1bits OSCCON1bits `VES778  1 e 1 @2189 ]
+[s S713 . 1 `uc 1 . 1 0 :3:0 
+`uc 1 NOSCR 1 0 :1:3 
+`uc 1 ORDY 1 0 :1:4 
+`uc 1 . 1 0 :1:5 
+`uc 1 SOSCPWR 1 0 :1:6 
+`uc 1 CSWHOLD 1 0 :1:7 
+]
+"23339
+[u S720 . 1 `S713 1 . 1 0 ]
+[v _OSCCON3bits OSCCON3bits `VES720  1 e 1 @2191 ]
+[s S746 . 1 `uc 1 PLLR 1 0 :1:0 
+`uc 1 . 1 0 :1:1 
+`uc 1 ADOR 1 0 :1:2 
+`uc 1 SOR 1 0 :1:3 
+`uc 1 LFOR 1 0 :1:4 
+`uc 1 MFOR 1 0 :1:5 
+`uc 1 HFOR 1 0 :1:6 
+`uc 1 EXTOR 1 0 :1:7 
+]
+"23381
+[u S755 . 1 `S746 1 . 1 0 ]
+[v _OSCSTATbits OSCSTATbits `VES755  1 e 1 @2192 ]
+[s S730 . 1 `uc 1 HFFRQ 1 0 :3:0 
+]
+"23545
+[s S732 . 1 `uc 1 HFFRQ0 1 0 :1:0 
+`uc 1 HFFRQ1 1 0 :1:1 
+`uc 1 HFFRQ2 1 0 :1:2 
+]
+[u S736 . 1 `S730 1 . 1 0 `S732 1 . 1 0 ]
+[v _OSCFRQbits OSCFRQbits `VES736  1 e 1 @2195 ]
+[s S642 . 1 `uc 1 PPSLOCKED 1 0 :1:0 
+]
+"29633
+[u S644 . 1 `S642 1 . 1 0 ]
+[v _PPSLOCKbits PPSLOCKbits `VES644  1 e 1 @3727 ]
+[s S650 . 1 `uc 1 SSP2CLKPPS0 1 0 :1:0 
+`uc 1 SSP2CLKPPS1 1 0 :1:1 
+`uc 1 SSP2CLKPPS2 1 0 :1:2 
+`uc 1 SSP2CLKPPS3 1 0 :1:3 
+`uc 1 SSP2CLKPPS4 1 0 :1:4 
+]
+"31416
+[s S656 . 1 `uc 1 SSP2CLKPPS 1 0 :5:0 
+]
+[u S658 . 1 `S650 1 . 1 0 `S656 1 . 1 0 ]
+[v _SSP2CLKPPSbits SSP2CLKPPSbits `VES658  1 e 1 @3784 ]
+[s S670 . 1 `uc 1 SSP2DATPPS0 1 0 :1:0 
+`uc 1 SSP2DATPPS1 1 0 :1:1 
+`uc 1 SSP2DATPPS2 1 0 :1:2 
+`uc 1 SSP2DATPPS3 1 0 :1:3 
+`uc 1 SSP2DATPPS4 1 0 :1:4 
+]
+"31468
+[s S676 . 1 `uc 1 SSP2DATPPS 1 0 :5:0 
+]
+[u S678 . 1 `S670 1 . 1 0 `S676 1 . 1 0 ]
+[v _SSP2DATPPSbits SSP2DATPPSbits `VES678  1 e 1 @3785 ]
+"32609
+[v _RC3PPS RC3PPS `VEuc  1 e 1 @3875 ]
+"32659
+[v _RC4PPS RC4PPS `VEuc  1 e 1 @3876 ]
+"32709
+[v _RC5PPS RC5PPS `VEuc  1 e 1 @3877 ]
+[s S537 . 1 `uc 1 ANSA0 1 0 :1:0 
+`uc 1 ANSA1 1 0 :1:1 
+`uc 1 ANSA2 1 0 :1:2 
+`uc 1 ANSA3 1 0 :1:3 
+`uc 1 ANSA4 1 0 :1:4 
+`uc 1 ANSA5 1 0 :1:5 
+`uc 1 ANSA6 1 0 :1:6 
+`uc 1 ANSA7 1 0 :1:7 
+]
+"32876
+[u S546 . 1 `S537 1 . 1 0 ]
+"32876
+"32876
+[v _ANSELAbits ANSELAbits `VES546  1 e 1 @3896 ]
+[s S621 . 1 `uc 1 ANSB0 1 0 :1:0 
+`uc 1 ANSB1 1 0 :1:1 
+`uc 1 ANSB2 1 0 :1:2 
+`uc 1 ANSB3 1 0 :1:3 
+`uc 1 ANSB4 1 0 :1:4 
+`uc 1 ANSB5 1 0 :1:5 
+`uc 1 ANSB6 1 0 :1:6 
+`uc 1 ANSB7 1 0 :1:7 
+]
+"33496
+[u S630 . 1 `S621 1 . 1 0 ]
+"33496
+"33496
+[v _ANSELBbits ANSELBbits `VES630  1 e 1 @3907 ]
+[s S579 . 1 `uc 1 ANSC0 1 0 :1:0 
+`uc 1 ANSC1 1 0 :1:1 
+`uc 1 ANSC2 1 0 :1:2 
+`uc 1 ANSC3 1 0 :1:3 
+`uc 1 ANSC4 1 0 :1:4 
+`uc 1 ANSC5 1 0 :1:5 
+`uc 1 ANSC6 1 0 :1:6 
+`uc 1 ANSC7 1 0 :1:7 
+]
+"34116
+[u S588 . 1 `S579 1 . 1 0 ]
+"34116
+"34116
+[v _ANSELCbits ANSELCbits `VES588  1 e 1 @3918 ]
+"35921
+"35921
+[v _BRG16 BRG16 `VEb  1 e 0 @2299 ]
+"35924
+[v _BRGH BRGH `VEb  1 e 0 @2290 ]
+"49 C:\Users\MDMac\Documents\Documents\Documente\university\term-6_winter2025\Embedded Systems\Labs\Lab6\ECE3232_Rover_Main_Ver01_03-2025.X\Rover_Main_Ver01.c
+[v _Rover_Team Rover_Team `[16]uc  1 e 16 0 ]
+"50
+[v _FFT_Home1 FFT_Home1 `[16]uc  1 e 16 0 ]
+"51
+[v _FFT_Home2 FFT_Home2 `[16]uc  1 e 16 0 ]
+[s S22 self 12 `i 1 i2c_addr 2 0 `i 1 i2c 2 2 `i 1 num_lines 2 4 `i 1 num_columns 2 6 `i 1 _current_state 2 8 `i 1 _backlight 2 10 ]
+"67
+[v _LCD LCD `S22  1 e 12 0 ]
+"109
+[v _UART_Not_Recieved UART_Not_Recieved `uc  1 e 1 0 ]
+"178
+[v _bf bf `uc  1 e 1 0 ]
+"478
+[v _frequency frequency `us  1 e 2 0 ]
+"573
+[v _main main `(v  1 e 1 0 ]
+{
+"584
+} 0
+"544
+[v _initialize_all initialize_all `(v  1 e 1 0 ]
+{
+"569
+} 0
+"343
+[v _initinit initinit `(v  1 e 1 0 ]
+{
+"354
+} 0
+"337
+[v _init_LCD init_LCD `(v  1 e 1 0 ]
+{
+"341
+} 0
+"302
+[v _HAL_Set_Entry_Mode HAL_Set_Entry_Mode `(v  1 e 1 0 ]
+{
+"303
+[v HAL_Set_Entry_Mode@entry_mode entry_mode `i  1 a 2 5 ]
+"302
+[v HAL_Set_Entry_Mode@inc inc `i  1 p 2 1 ]
+[v HAL_Set_Entry_Mode@shift shift `i  1 p 2 3 ]
+"311
+} 0
+"294
+[v _HAL_Display_On HAL_Display_On `(v  1 e 1 0 ]
+{
+"296
+} 0
+"238
+[v _HAL_Write_Init_Nibble HAL_Write_Init_Nibble `(v  1 e 1 0 ]
+{
+[v HAL_Write_Init_Nibble@nibble nibble `uc  1 p 1 wreg ]
+"239
+[v HAL_Write_Init_Nibble@byte byte `uc  1 a 1 1 ]
+"238
+[v HAL_Write_Init_Nibble@nibble nibble `uc  1 p 1 wreg ]
+[v HAL_Write_Init_Nibble@nibble nibble `uc  1 p 1 0 ]
+"243
+} 0
+"117
+[v _configUART1 configUART1 `(v  1 e 1 0 ]
+{
+"134
+} 0
+"395
+[v _configPins configPins `(v  1 e 1 0 ]
+{
+"444
+} 0
+"139
+[v _configISR configISR `(v  1 e 1 0 ]
+{
+"146
+} 0
+"156
+[v _configI2C configI2C `(v  1 e 1 0 ]
+{
+"168
+} 0
+"376
+[v _HAL_LED_OFF HAL_LED_OFF `(v  1 e 1 0 ]
+{
+[v HAL_LED_OFF@LED LED `i  1 p 2 3 ]
+"391
+} 0
+"479
+[v _alienFrequencyTask alienFrequencyTask `(v  1 e 1 0 ]
+{
+"502
+[v alienFrequencyTask@freq_digit freq_digit `[4]uc  1 a 4 13 ]
+"501
+[v alienFrequencyTask@freq_char freq_char `[4]uc  1 a 4 9 ]
+"505
+[v alienFrequencyTask@i i `i  1 a 2 18 ]
+"503
+[v alienFrequencyTask@counter counter `uc  1 a 1 17 ]
+"533
+} 0
+"446
+[v _intToChar intToChar `(uc  1 e 1 0 ]
+{
+[v intToChar@integer integer `uc  1 p 1 wreg ]
+[v intToChar@integer integer `uc  1 p 1 wreg ]
+[v intToChar@integer integer `uc  1 p 1 3 ]
+"470
+} 0
+"5 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\lwmod.c
+[v ___lwmod __lwmod `(ui  1 e 2 0 ]
+{
+"10
+[v ___lwmod@counter counter `uc  1 a 1 7 ]
+"5
+[v ___lwmod@divisor divisor `ui  1 p 2 3 ]
+[v ___lwmod@dividend dividend `ui  1 p 2 5 ]
+"25
+} 0
+"5 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\lwdiv.c
+[v ___lwdiv __lwdiv `(ui  1 e 2 0 ]
+{
+"10
+[v ___lwdiv@quotient quotient `ui  1 a 2 7 ]
+"11
+[v ___lwdiv@counter counter `uc  1 a 1 9 ]
+"5
+[v ___lwdiv@divisor divisor `ui  1 p 2 3 ]
+[v ___lwdiv@dividend dividend `ui  1 p 2 5 ]
+"30
+} 0
+"5 C:\Program Files\Microchip\xc8\v3.00\pic\sources\c99\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 2 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 1 ]
+[v ___awdiv@counter counter `uc  1 a 1 0 ]
+"5
+[v ___awdiv@divisor divisor `i  1 p 2 3 ]
+[v ___awdiv@dividend dividend `i  1 p 2 5 ]
+"41
+} 0
+"318 C:\Users\MDMac\Documents\Documents\Documente\university\term-6_winter2025\Embedded Systems\Labs\Lab6\ECE3232_Rover_Main_Ver01_03-2025.X\Rover_Main_Ver01.c
+[v _HAL_Set_Cursor HAL_Set_Cursor `(v  1 e 1 0 ]
+{
+"319
+[v HAL_Set_Cursor@addr addr `i  1 a 2 5 ]
+"318
+[v HAL_Set_Cursor@col col `i  1 p 2 1 ]
+[v HAL_Set_Cursor@line line `i  1 p 2 3 ]
+"327
+} 0
+"329
+[v _HAL_LCD_Print HAL_LCD_Print `(v  1 e 1 0 ]
+{
+"330
+[v HAL_LCD_Print@i i `i  1 a 2 5 ]
+"329
+[v HAL_LCD_Print@string string `*.4uc  1 p 1 1 ]
+[v HAL_LCD_Print@size size `i  1 p 2 2 ]
+"335
+} 0
+"267
+[v _HAL_Write_Data HAL_Write_Data `(v  1 e 1 0 ]
+{
+[v HAL_Write_Data@data data `uc  1 p 1 wreg ]
+[v HAL_Write_Data@data data `uc  1 p 1 wreg ]
+[v HAL_Write_Data@data data `uc  1 p 1 0 ]
+"270
+} 0
+"273
+[v _HAL_Clear HAL_Clear `(v  1 e 1 0 ]
+{
+"276
+} 0
+"245
+[v _HAL_Write_Command HAL_Write_Command `(v  1 e 1 0 ]
+{
+[v HAL_Write_Command@cmd cmd `uc  1 p 1 wreg ]
+[v HAL_Write_Command@cmd cmd `uc  1 p 1 wreg ]
+[v HAL_Write_Command@cmd cmd `uc  1 p 1 0 ]
+"251
+} 0
+"232
+[v __write_byte _write_byte `(v  1 e 1 0 ]
+{
+[v __write_byte@byte byte `uc  1 p 1 wreg ]
+[v __write_byte@byte byte `uc  1 p 1 wreg ]
+[v __write_byte@byte byte `uc  1 p 1 8 ]
+"236
+} 0
+"225
+[v _HAL_Pulse_Enable HAL_Pulse_Enable `(v  1 e 1 0 ]
+{
+[v HAL_Pulse_Enable@byte byte `uc  1 p 1 wreg ]
+[v HAL_Pulse_Enable@byte byte `uc  1 p 1 wreg ]
+[v HAL_Pulse_Enable@byte byte `uc  1 p 1 7 ]
+"230
+} 0
+"196
+[v _HAL_I2C_Master_Transmit HAL_I2C_Master_Transmit `(v  1 e 1 0 ]
+{
+[v HAL_I2C_Master_Transmit@slaveAddress slaveAddress `uc  1 p 1 wreg ]
+[v HAL_I2C_Master_Transmit@slaveAddress slaveAddress `uc  1 p 1 wreg ]
+[v HAL_I2C_Master_Transmit@dataByte dataByte `*.4uc  1 p 1 4 ]
+[v HAL_I2C_Master_Transmit@numberOfDataBytes numberOfDataBytes `uc  1 p 1 5 ]
+[v HAL_I2C_Master_Transmit@slaveAddress slaveAddress `uc  1 p 1 6 ]
+"206
+} 0
+"179
+[v _I2C_write I2C_write `(v  1 e 1 0 ]
+{
+[v I2C_write@data data `uc  1 p 1 wreg ]
+[v I2C_write@data data `uc  1 p 1 wreg ]
+[v I2C_write@data data `uc  1 p 1 3 ]
+"187
+} 0
+"149
+[v _I2C_stop I2C_stop `(v  1 e 1 0 ]
+{
+"154
+} 0
+"170
+[v _I2C_start I2C_start `(v  1 e 1 0 ]
+{
+"177
+} 0
+"586
+[v _ISR ISR `II(v  1 e 1 0 ]
+{
+"602
+} 0
