@@ -657,19 +657,47 @@ void alienFrequencyTask(){
     HAL_LCD_Print(&FFT_Result2[0], 3);
 
     
-    __delay_ms(100);
+    __delay_ms(1000);
     HAL_Clear();
     // 
+  }
+//<<<<<   Magnetic Detection Task   >>>>>
+// 
+// 1 switch is dedicated to activating the magnetic probe
+void magneticMaterialDetection(){
+    /*
+     * if magnetic anomaly is detected
+     *      ask what the number of the pyramid is
+     *          
+     *      while switch C is not active
+     *          call flysky loop inside
+     *          wait till response from dial
+     *          display on lcd
+     *          when switch goes active, response is clocked in
+     *      
+     *      If, dial is '10', false positive (or other higher number)
+     * 
+     *      else, send number ofver UART to the UNB dev board
+     */  
 }
 
-void magneticMaterialDetection(){
-}
 
 void IRdetection(){
 }
 
 //==============================================================================
 //<<<<<   Main Initialization Code   >>>>>
+/* Control scheme:
+ * - switch A and B are selector (shift) switches. They change the control scheme depending on the task.
+ *      ? Code:
+ *      ? 1,1 corresponds to the magnetic anomaly challenge
+ *      ? 1,0 corresponds to the alien frequency challenge
+ *      ? 0,1 corresponds to IR detection
+ *      ? 0,0 corresponds to the default rover setting and the turret defence challenge
+ * 
+ * Note: add two charcter to LCD to signify the mode the robot is currently
+ * Note: add error code for improper changing of modes.
+*/
 
 void initialize_all(){
     LCD._backlight = 0x8;
@@ -702,10 +730,26 @@ void main(void) {
     LATBbits.LATB4 = 1;
     __delay_ms(100);
     while(1){
-        HAL_LCD_Print(&Rover_Team[0], 16);
-        while(PORTAbits.RA5 == 1){
-        }
-        alienFrequencyTask();
+        /*
+         * flysky();        sends data of UART requiesting control input
+         * if control scheme 1 | default
+         * 
+         * 
+         * else if control scheme 2 | IR detection
+         * 
+         * 
+         * else if control scheme 3 | Alien frequency
+         * 
+         * 
+         * else if control scheme 4 | Mag detection
+         *      if switch d is active
+         *          call magnetic detection function
+         * 
+         
+         * while flysky not recieved (avoid relooping)
+         
+         
+         */       
     }
     return;
 }
@@ -713,14 +757,17 @@ void main(void) {
 void __interrupt() ISR ()
 {
     if(PIR3bits.RCIF == 1){
-        if(UART_Not_Recieved == 2){
-            frequency = RC1REG << 8;
-        }
-        else{
-            frequency = frequency + RC1REG;
-        }
-
-        UART_Not_Recieved--;
+        // Insert UART code here
+        
+        // UART code end
         PIR3bits.RCIF = 0;
     }
 }
+
+//<<<<<   Unused Code, Saved for Later  >>>>>
+
+/*HAL_LCD_Print(&Rover_Team[0], 16);
+        while(PORTAbits.RA5 == 1){
+        }
+        alienFrequencyTask();
+ */
