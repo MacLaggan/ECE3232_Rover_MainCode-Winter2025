@@ -43,7 +43,7 @@
 //==============================================================================
 //<<<<<   Included Libraries   >>>>>
 #include <xc.h>
-
+#include <math.h>
 //==============================================================================
 // Global Variables
 
@@ -58,7 +58,14 @@ char FFT_Result2[] = {' ', 'H', 'z'};
 //<<<<<   Variables   >>>>>
 uint8_t UART_Not_Recieved = 0;  // This variable serves as a flag to count the number of UART transmissions recieved.
 uint8_t bf; // A buffer for the I2C send function. It is global so that it canbe monitored with the debugger.
-
+uint8_t arr[26]; // The array which contains all recieved data from the UNB dev board
+int16_t right_Joystick_X; 
+int16_t left_Joystick_X; 
+int16_t right_Joystick_Y; 
+int16_t left_Joystick_Y;
+int16_t left_Pot;
+int16_t left_Pot;
+int counter; // counter which indicates whether data is waiting to be recieved
 //==============================================================================
 /* Structures Begin Here
  */
@@ -112,7 +119,7 @@ struct self LCD;
 
 //<<<<<   System Defined Values   >>>>>
 #define _XTAL_FREQ 32000000 // Defined clock frequency for the __delay_ms() function
-
+#define SPEED_OFFSET 40
 //==============================================================================
 // Functions Begin Here
 
@@ -125,8 +132,10 @@ void configUART1(){
     BAUD1CONbits.ABDEN = 0;
     BRG16 = 1;
     BRGH = 1;
-    SP1BRGH = 0x3;
-    SP1BRGL = 0x40;
+    //SP1BRGH = 0x3;
+    //SP1BRGL = 0x40;
+    SP1BRGH = 0b00000000;
+    SP1BRGL = 0b01000100;
     RC1STAbits.RX9 = 0;
     TX1STAbits.SYNC = 0;
     TX1STAbits.TXEN = 1;
@@ -204,7 +213,7 @@ void HAL_I2C_Master_Transmit(uint8_t slaveAddress, uint8_t* dataByte, uint8_t nu
 
 
 //<<<<<   UART1 Functions Begin Here   >>>>>
-void UART1_sendData(uint8_t byte){
+void UART_sendData(uint8_t byte){
     TX1REG = byte;
     while(TX1STAbits.TRMT == 0){
     }  // Wait here until the byte has been sent
@@ -212,8 +221,14 @@ void UART1_sendData(uint8_t byte){
 
 void UART1_recieveData(){
 }
-uint16_t message = 0; // Message recieved from other microcontroller
 
+void UART_SendBuffer(const uint8_t *buffer, uint8_t length){
+    for(uint8_t i = 0; i<length; i++){
+        UART_sendData(buffer[i]);
+        __delay_us(100);
+    }
+}
+uint16_t message = 0; // Message recieved from other microcontroller
 //<<<<<   TI ASYNCHRONOUS SERIAL   >>>>>
 uint16_t TI_Recieve(){
     //<<<<<   Local Variable Declaration   >>>>>
@@ -578,6 +593,151 @@ char intToChar(uint16_t integer){
     return('_');
 }
 
+void mergeVariables(){
+    right_Joystick_X = (arr[7]<<8) | arr[6];
+    left_Joystick_X = (arr[13]<<8) | arr[12];
+    right_Joystick_Y = (arr[9]<<8) | arr[8];
+    left_Joystick_Y = (arr[11]<<8) | arr[10];
+    left_Pot = (arr[23]<<8) | arr[22];
+    left_Pot = (arr[25]<<8) | arr[24];
+    
+    // Joysticks have values between -128 and 128
+    right_Joystick_X = (right_Joystick_X - 1500)/8;
+    left_Joystick_X = (left_Joystick_X - 1500)/8;
+    right_Joystick_Y = (right_Joystick_Y - 1500)/8;
+    left_Joystick_Y = (left_Joystick_Y - 1500)/8;
+    
+}
+// backwards = 2 forwards = 1;
+// speed 0 -> 100;
+
+//==============================================================================
+//<<<<<   UNB Dev board Interaction Code   >>>>>
+void Flysky(){
+    uint8_t message[6];
+    message[0] = 0xFE;
+    message[1] = 0x19;
+    message[2] = 0x01;
+    message[3] = 0x05;
+    message[4] = 0x00;
+    message[5] = 0x00;
+    UART_SendBuffer(message,6);
+}
+
+void MotorSettings(uint8_t motorA, uint8_t motorA_pwm, uint8_t motorB, uint8_t motorB_pwm){
+    uint8_t message[10];
+    message[0] = 0xFE;
+    message[1] = 0x19;
+    message[2] = 0x01;
+    message[3] = 0x06;
+    message[4] = 0x04;
+    message[5] = 0x00;
+    message[6] = motorA;
+    message[7] = motorA_pwm;
+    message[8] = motorB;
+    message[9] = motorB_pwm;
+    UART_SendBuffer(message,10);
+}
+float angle;
+float speed;
+void vectorCalculations(){
+    int magnitude = sqrt(right_Joystick_X * right_Joystick_X + right_Joystick_Y * right_Joystick_Y)+SPEED_OFFSET;
+    HAL_LED_OFF(1);
+    HAL_LED_OFF(2);
+    HAL_LED_OFF(3);
+    HAL_LED_OFF(4);
+    
+    uint8_t direction;
+    if(magnitude < 50){
+         MotorSettings(1,0, 1,0);   
+    }
+    else if( (right_Joystick_X == 0) | (right_Joystick_Y == 0) ){
+        if(right_Joystick_X == right_Joystick_Y){
+            MotorSettings(1,0, 1,0);
+        }
+        if(right_Joystick_X == 0){
+            if(right_Joystick_Y > 0){
+                MotorSettings(1,magnitude, 1, magnitude);
+            }
+            else{
+                MotorSettings(2,magnitude, 2, magnitude);
+            }
+        }
+        else{
+            if(right_Joystick_X > 0){
+                MotorSettings(2,magnitude, 1, magnitude);
+            }
+            else{
+                MotorSettings(1,magnitude, 2, magnitude);
+            }
+        }
+    }
+    else if(right_Joystick_X < 0){ // second or fourth
+        angle = atan(((float)right_Joystick_Y / (float)right_Joystick_X));
+        if(angle > 0){ // third
+           HAL_LED_ON(3);
+           if(angle < M_PI/4){
+                // lm is going backwards
+                // rm is going forwards
+                speed = ((angle - M_PI/4)*-1)*127+SPEED_OFFSET;
+                MotorSettings(1,speed, 2, magnitude);
+            }
+            else{
+                speed = (angle - M_PI/4)*127+SPEED_OFFSET;
+                MotorSettings(2,speed, 2,magnitude);
+            }
+        }
+        else{ // second
+           angle *= -1;
+           HAL_LED_ON(2);
+           if(angle < M_PI/4){
+                // lm is going backwards
+                // rm is going forwards
+                speed = ((angle - M_PI/4)*-1)*127+SPEED_OFFSET;
+                MotorSettings(1,magnitude, 2, speed);
+            }
+            else{
+                speed = (angle - M_PI/4)*127+SPEED_OFFSET;
+                MotorSettings(1,magnitude, 1, speed);
+            }
+        }
+    }
+    else{ // first or fourth 
+        angle = atan(((float)right_Joystick_Y / (float)right_Joystick_X));
+        if(angle > 0){ // first
+            HAL_LED_ON(1);
+            // lm is magnitude
+            // rm is angle
+            if(angle < M_PI/4){
+                // rm is going backwards
+                // lm is going forwards
+                speed = ((angle - M_PI/4)*-1)*127+SPEED_OFFSET;
+                MotorSettings(2,speed, 1, magnitude);
+            }
+            else{
+                speed = (angle - M_PI/4)*127+SPEED_OFFSET;
+                MotorSettings(1,speed, 1, magnitude);
+            }
+        }
+        else{ // fourth    
+            angle *= -1;
+            HAL_LED_ON(4);
+            // angle is lm speed / direction
+            if(angle < M_PI/4){
+                // rm is going backwards
+                // lm is going forwards
+                angle = ((angle - M_PI/4)*1)*127;
+                MotorSettings(2,magnitude, 1, angle);
+            }
+            else{
+                angle = (angle - M_PI/4)*127;
+                MotorSettings(2,magnitude, 2, angle);
+            }
+        }
+    }
+}
+
+
 //==============================================================================
 /* Member Function Begin Here
  */
@@ -638,7 +798,7 @@ void alienFrequencyTask(){
     HAL_LCD_Print(&FFT_Result1[0], 11);
     
     HAL_Set_Cursor(0, 1);
-    switch(digit +    1){
+    switch(digit + 1){
         case 1:
             HAL_LCD_Print(&freq_char[0], 1);
             break;
@@ -724,11 +884,12 @@ void initialize_all(){
 }
 //==============================================================================
 //<<<<<   Main Code   >>>>>
+int counter;
 
 void main(void) {
     initialize_all();
     LATBbits.LATB4 = 1;
-    __delay_ms(100);
+    __delay_ms(1000);
     while(1){
         /*
          * flysky();        sends data of UART requiesting control input
@@ -747,9 +908,21 @@ void main(void) {
          * 
          
          * while flysky not recieved (avoid relooping)
+              
          
-         
-         */       
+         */    
+        counter = 0;
+        Flysky(); // Flysky is sent, waiting on recieved data
+        // Configure Joystick and Dial variables
+        mergeVariables();
+        vectorCalculations();
+        while(counter != 25){
+        }
+        if(counter == 25){
+            //forward
+            
+            __delay_ms(5);
+        }
     }
     return;
 }
@@ -758,10 +931,14 @@ void __interrupt() ISR ()
 {
     if(PIR3bits.RCIF == 1){
         // Insert UART code here
-        
+        if(counter<26){
+            arr[counter] = RC1REG;
+            counter++;
+        }
         // UART code end
         PIR3bits.RCIF = 0;
     }
+    PIR3bits.TXIF = 0;
 }
 
 //<<<<<   Unused Code, Saved for Later  >>>>>
