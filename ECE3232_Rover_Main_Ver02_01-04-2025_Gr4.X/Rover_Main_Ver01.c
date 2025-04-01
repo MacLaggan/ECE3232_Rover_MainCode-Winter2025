@@ -473,24 +473,31 @@ void laserTurretDefence()
     
     __delay_ms(1000);      //delay 1 second on start up, just to avoid noise
     
-    while (1)
-    {
-        counter = 0;            //Reset the index, to start receiving new data for the PCU
-        PCU_Info();
-        while (counter != 11)   //While array is getting filled, wait
+    counter = 0;            //Reset the index, to start receiving new data for the FLYSKY
+    Flysky();
+    while (counter != 25)   //While array is getting filled, wait
         {}
-        if (counter == 11)      //when array gets filled, then we can process
+    if (counter == 25)
+    {
+        if (arr[20] == 0xD0)
         {
-            if (counter[10] != 0x0)   //Check PCU info response to see if the flag bit is set
+            counter = 0;            //Reset the index, to start receiving new data for the PCU
+            PCU_Info();
+            while (counter != 11)   //While array is getting filled, wait
+            {}
+            if (counter == 11)      //when array gets filled, then we can process
             {
-                if (confirm == 0)
+                if (arr[10] != 0x0)   //Check PCU info response to see if the flag bit is set
                 {
-                    Shield_Code();         //Transmit shield code
-                    confirm = 1;
+                    if (confirm == 0)
+                    {
+                        Shield_Code();         //Transmit shield code
+                        confirm = 1;
+                    }
                 }
-            }
-        }                 
+            }                 
         __delay_ms(1);                         //delay to just make sure everything goes through
+        }
     }
 }//
 
@@ -648,7 +655,7 @@ void main(void) {
             case 1:      //Matt's Task
                 break;
             case 2:      //Tobe's Task
-                laserTurretDefence();
+                //laserTurretDefence();
                 break;
             case 3:      //Ose's Task
                 break;
@@ -706,7 +713,7 @@ void __interrupt() ISR ()
          
          * while flysky not recieved (avoid relooping)
               
-         
+        
          */    
 
 // Matt was here
