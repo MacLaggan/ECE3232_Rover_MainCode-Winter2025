@@ -56,6 +56,11 @@ char FFT_Home2[] = {'T','R','A','N','S','F','O','R','M',' ',' ',' ',' ',' ',' ',
 char Loading[] = {'|', '/','-','\\'};
 char FFT_Result1[] = {'F', 'U', 'N', 'D', 'A', 'M','E','N','T','A','L'};
 char FFT_Result2[] = {' ', 'H', 'z'};
+char LT_Home[] = {'L','A','S','E','R',' ','T','U','R','R','E','T'};
+char MA_Home1[] = {'M','A','G','N','E','T','I','C',' ','A','N','O','M','A','L','Y'};
+char MA_Home2[] = {'S','E','N','S','I','N','G'};
+char IR_Home1[] = {'I','R',' ','D','E','T','E','C','T','I','O','N'};
+char IR_Home2[] = {'S','E','N','S','I','N','G'};
 
 //<<<<<   Variables   >>>>>
 uint8_t UART_Not_Recieved = 0;  // This variable serves as a flag to count the number of UART transmissions recieved.
@@ -260,6 +265,8 @@ void mergeVariables(){
     left_Joystick_Y = (arr[11]<<8) | arr[10];
     left_Pot = (arr[23]<<8) | arr[22];
     left_Pot = (arr[25]<<8) | arr[24];
+    left_Pot -= 1000;
+    left_Pot /= 250;
     
     // Joysticks have values between -128 and 128
     right_Joystick_X = (right_Joystick_X - 1500)/8;
@@ -283,7 +290,28 @@ void Flysky(){
     message[5] = 0x00;
     UART_SendBuffer(message,6);
 }
-
+void PCU_Info()   ////code sent to the PCU to get PCU info
+{
+    uint8_t message[6];
+    message[0] = 0xFE;
+    message[1] = 0x19;
+    message[2] = 0x01;
+    message[3] = 0x04;
+    message[4] = 0x00;
+    message[5] = 0x00;
+    UART_SendBuffer(message,6);
+}
+void Shield_Code()    //Shield code 
+{
+    uint8_t message[6];
+    message[0] = 0xFE;
+    message[1] = 0x19;
+    message[2] = 0x02;
+    message[3] = 0x09;
+    message[4] = 0x00;
+    message[5] = 0x00;
+    UART_SendBuffer(message,6);
+}
 /* MotorSettings is a function which transmits the desired motor settings to the UNB dev board. 
  * motorA and motorB represent the direction of motion. 1 signifies forward, 2 is backward.
 */
@@ -410,8 +438,60 @@ void vectorCalculations(){
 
 char freq_char[4];
 uint16_t freq_digit[4];
+uint8_t confirm = 0;
 
-void laserTurretDefence(){
+void laserTurretDefence()
+{
+     // BAUD rate = 115 200 bps 
+    BRG16 = 1;
+    BRGH = 1;
+    SP1BRGH = 0x0;
+    SP1BRGL = 0x44;
+    BAUD1CONbits.SCKP = 0; 
+    // Receive 
+    RC1STAbits.SPEN = 1;          //Receive enabled
+    RC1STAbits.CREN = 1;          //Continuous Receive enabled
+    // Transmit 
+    TX1STAbits.TXEN = 1;          //Transmit enabled
+    TX1STAbits.SYNC = 0;          //Asynchronous mode
+    // PPS
+        //TX configured as a digital output pin    
+    TRISCbits.TRISC5 = 0;
+    ANSELCbits.ANSC5 = 0;
+    RC5PPS = 0x10;
+        //RX configured as a digital input pin (taken from PWM)   
+    TRISCbits.TRISC7 = 1;
+    ANSELCbits.ANSC7 = 0;
+ 
+    // Interrupts Enable
+    INTCONbits.GIE = 1;           //Global interrupt
+    INTCONbits.PEIE = 1;          //Peripheral interrupt
+    PIE3bits.RCIE = 1;            //USART Receive interrupt enable bit  
+    
+    //TRISAbits.TRISA5 = 1;
+    //ANSELAbits.ANSA5 = 0;
+    
+    __delay_ms(1000);      //delay 1 second on start up, just to avoid noise
+    
+    while (1)
+    {
+        counter = 0;            //Reset the index, to start receiving new data for the PCU
+        PCU_Info();
+        while (counter != 11)   //While array is getting filled, wait
+        {}
+        if (counter == 11)      //when array gets filled, then we can process
+        {
+            if (counter[10] != 0x0)   //Check PCU info response to see if the flag bit is set
+            {
+                if (confirm == 0)
+                {
+                    Shield_Code();         //Transmit shield code
+                    confirm = 1;
+                }
+            }
+        }                 
+        __delay_ms(1);                         //delay to just make sure everything goes through
+    }
 }//
 
 uint16_t frequency = 0xFFFF;
@@ -561,6 +641,20 @@ void main(void) {
         Flysky(); // Flysky is sent, waiting on recieved data
         mergeVariables(); // Configure Joystick and Dial variables
         vectorCalculations(); // Computing motor settings
+        switch(left_Pot)
+        {
+            case 0:
+                break;
+            case 1:      //Matt's Task
+                break;
+            case 2:      //Tobe's Task
+                laserTurretDefence();
+                break;
+            case 3:      //Ose's Task
+                break;
+            case 4:      //Faaiz's Task
+                break;
+        }                
         while(counter != 25){
         }
         if(counter == 25){
